@@ -26,6 +26,8 @@ void connect_handler(int sig, siginfo_t *info, void *ucontext)
 {
     my_putstr("\nenemy connected\n");
     connect_note_book(SET_PID, (int)info->si_pid);
+    (void)sig;
+    (void)ucontext;
 }
 
 pid_t get_connection(void)
@@ -48,4 +50,6 @@ int first_player(char *map_path)
 
     second_pid = get_connection();
     kill(second_pid, SIGUSR1);
+    (void)map_path;
+    return (0);
 }

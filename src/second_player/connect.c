@@ -8,6 +8,7 @@
 #include <signal.h>
 #include <sys/types.h>
 #include <time.h>
+#include <stdio.h>
 #include "my.h"
 
 int has_connected(int action)
@@ -23,6 +24,7 @@ void valid_player(int sig)
 {
     my_putstr("successfully connected\n");
     has_connected(1);
+    (void)sig;
 }
 
 int send_connection(pid_t fp_pid)
@@ -47,8 +49,8 @@ int send_connection(pid_t fp_pid)
 
 int second_player(char *map_file, pid_t fp_pid)
 {
-    if (!send_connection(fp_pid)) {
+    if (!send_connection(fp_pid))
         my_put_error("Error: timeout, wrong PID.\n");
-        return (0);
-    }
+    (void)map_file;
+    return (0);
 }
