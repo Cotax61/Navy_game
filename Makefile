@@ -12,6 +12,9 @@ SRC 	=	src/first_player/connect.c		\
 			src/second_player/connect.c		\
 			src/second_player/loop.c		\
 			src/game/seek_n_read.c			\
+			src/parsing/file_parsing.c		\
+			src/parsing/my_split_cpy.c		\
+			src/parsing/my_str_split.c		\
 
 OBJ 	=	$(SRC:.c=.o)
 

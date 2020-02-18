@@ -13,5 +13,9 @@
 
 int first_player(char *map_path);
 int second_player(char *map_file, pid_t fp_pid);
+char **my_str_split(char *str, char sep);
+char *my_split_cpy(char *dest, char const *src, char sep);
+char **place_navy(char *filename, char **map);
+char *seek_n_read(char *filepath);
 
 #endif /* !MAIN_H_ */
