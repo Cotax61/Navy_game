@@ -9,6 +9,8 @@ void my_put_error(char *str);
 
 int my_usage(int a, int b)
 {
+    (void)a;
+    (void)b;
     my_put_error("error: this operator is not supported");
     return (0);
 }

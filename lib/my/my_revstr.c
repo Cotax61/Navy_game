@@ -8,8 +8,7 @@
 char *my_revstr(char *str)
 {
     int i = 0;
-    char c;
-    int x = 0;
+    char c = 0;
 
     if (str == 0)
         return (0);

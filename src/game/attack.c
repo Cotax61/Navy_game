@@ -60,6 +60,13 @@ int check_atk_response(char **map, int letter, int number)
     return (response);
 }
 
+static void send_signals(pid_t enemy)
+{
+    kill(enemy, SIGUSR1);
+    pause();
+    usleep(300);
+}
+
 int attack(char **map, pid_t enemy)
 {
     char *user_ipt = read_user_input(map);
@@ -67,21 +74,16 @@ int attack(char **map, pid_t enemy)
     if (!user_ipt)
         return (-1);
     usleep(600);
-    for (char i = 'a' - 1; i != (icase(user_ipt[0]) / 2) + 1; i++) {
-        kill(enemy, SIGUSR1);
-        pause();
-        usleep(300);
-    }
+    for (char i = 'a' - 1; i != (icase(user_ipt[0]) / 2) + 1; i++)
+        send_signals(enemy);
     kill(enemy, SIGUSR2);
     pause();
     usleep(300);
-    for (char i = '0'; i != user_ipt[1] + 1; i++) {
-        kill(enemy, SIGUSR1);
-        pause();
-        usleep(300);
-    }
+    for (char i = '0'; i != user_ipt[1] + 1; i++)
+        send_signals(enemy);
     kill(enemy, SIGUSR2);
     attack_log(RESET_COUNT);
     pause();
-    return (check_atk_response(map, (icase(user_ipt[0]) / 2) + 1,  user_ipt[1] + 1));
+    return (check_atk_response(map, (icase(user_ipt[0]) / 2) + 1,
+    user_ipt[1] + 1));
 }

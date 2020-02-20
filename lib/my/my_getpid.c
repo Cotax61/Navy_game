@@ -11,7 +11,6 @@
 int check_str(char *str)
 {
     int i = 0;
-    int j = 0;
 
     if (str[0] == '-')
         return (-1);

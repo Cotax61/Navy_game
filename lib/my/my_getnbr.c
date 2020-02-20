@@ -16,7 +16,7 @@ static int is_num_too_fat(const char *str)
             negat = 1;
         else
             num = (num * 10) + (str[i] - 48);
-        if (i > 11 && str[0] == '-' || i > 10 && str[0] != '-')
+        if ((i > 11 && str[0] == '-') || (i > 10 && str[0] != '-'))
             return (0);
         i++;
     }
@@ -31,7 +31,7 @@ static int find_the_num(const char *str)
 {
     int i = 0;
 
-    while (str[i] != '\0' && str[i] < '0' || str[i] > '9') {
+    while ((str[i] != '\0' && str[i] < '0') || str[i] > '9') {
         if (str[i] == '-' && str[i + 1] >= '0' && str[i + 1] <= '9') {
             break;
         }
@@ -77,7 +77,6 @@ static int my_atoi(char str[], int is_positive)
 
 int my_getnbr(const char *str)
 {
-    int num = 0;
     char num_str[15];
     int i = find_the_num(str);
     int positive = 1;

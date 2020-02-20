@@ -7,7 +7,7 @@
 
 static int my_is_a_prime(int nb)
 {
-    int divide;
+    int divide = 0;
 
     if (nb < 0 || nb == 0 || nb == 1)
         return (0);
@@ -22,7 +22,6 @@ static int my_is_a_prime(int nb)
 
 int my_find_prime_sup(int nb)
 {
-    int i = nb;
 
     while (!my_is_a_prime(nb)) {
         if (nb == 2147483647)

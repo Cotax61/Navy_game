@@ -31,7 +31,7 @@ TEST_SRC	=	tests/test_your_test.c	\
 
 TEST_OBJ	=	$(TEST_SRC:.c=.o)
 
-CFLAGS	=	-I./include -Wall -Wextra -pedantic
+CFLAGS	=	-I./include -Wall -Wextra -Werror -pedantic -g3
 
 LFLAGS	=	-L./lib -lmy
 
