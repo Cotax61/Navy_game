@@ -10,6 +10,7 @@
 #include <time.h>
 #include "player_two_init.h"
 #include "connect.h"
+#include "main.h"
 #include "my.h"
 
 int has_connected(int action)
@@ -62,5 +63,6 @@ int second_player(char *map_file, pid_t fp_pid)
     sigaction(SIGUSR1, &atk, NULL);
     sigaction(SIGUSR2, &atk, NULL);
     second_player_loop(map, fp_pid);
+    (void)map_file;
     return (0);
 }

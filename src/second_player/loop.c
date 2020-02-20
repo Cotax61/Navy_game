@@ -8,6 +8,7 @@
 #include <sys/types.h>
 #include "loop.h"
 #include "my.h"
+#include "main.h"
 
 int second_player_loop(char **my_map, pid_t enemy)
 {
@@ -20,7 +21,7 @@ int second_player_loop(char **my_map, pid_t enemy)
         display_pos(my_map, enemy_map);
         my_putstr("waiting for enemy's attack...\n");
         damage = defend(my_map, enemy);
-        my_hp -= damage; 
+        my_hp -= damage;
         if (!my_hp)
             break;
         damage = attack(my_map, enemy);

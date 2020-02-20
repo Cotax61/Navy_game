@@ -5,6 +5,9 @@
 ** print the alphabet in ascending order
 */
 
+#ifndef MY_H
+#define MY_H
+
 void my_putchar(char c);
 int my_usage(int a, int b);
 int my_isneg(int nb);
@@ -44,3 +47,8 @@ char *my_strcat(char *dest, char const *src);
 char *my_strstr(char *str, char const *find);
 char *my_strncat(char *dest, char const *src, int n);
 char **my_str_to_word_array(char *str);
+void my_put_error(char *str);
+void my_put_array(char **array, int line_jump, int end_jump);
+char icase(char c);
+
+#endif /* MY_H */

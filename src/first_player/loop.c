@@ -7,6 +7,8 @@
 
 #include <sys/types.h>
 #include "loop.h"
+#include "main.h"
+#include "my.h"
 
 int first_player_loop(char **my_map, pid_t enemy)
 {

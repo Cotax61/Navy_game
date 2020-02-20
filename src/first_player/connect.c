@@ -12,6 +12,7 @@
 #include "my.h"
 #include "player_one_init.h"
 #include "connect.h"
+#include "main.h"
 
 pid_t connect_note_book(char action, int info)
 {

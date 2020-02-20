@@ -17,5 +17,6 @@ char **my_str_split(char *str, char sep);
 char *my_split_cpy(char *dest, char const *src, char sep);
 char **place_navy(char *filename, char **map);
 char *seek_n_read(char *filepath);
+void display_pos(char **map1, char **map2);
 
 #endif /* !MAIN_H_ */
