@@ -11,6 +11,11 @@ SRC	=	src/first_player/connect.c \
 		src/first_player/loop.c \
 		src/second_player/connect.c \
 		src/second_player/loop.c \
+		src/game/defend.c \
+		src/game/create_map.c \
+		src/game/attack.c \
+		src/attack_log.c \
+		src/display.c \
 
 OBJ	=	$(SRC:.c=.o) $(MAIN:.c=.o)
 

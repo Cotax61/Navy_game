@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "attack_log.h": "c",
+        "player_two_init.h": "c",
+        "loop.h": "c",
+        "my.h": "c",
+        "types.h": "c"
+    }
+}

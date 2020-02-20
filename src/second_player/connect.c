@@ -8,6 +8,8 @@
 #include <signal.h>
 #include <sys/types.h>
 #include <time.h>
+#include "player_two_init.h"
+#include "connect.h"
 #include "my.h"
 
 int has_connected(int action)
@@ -35,7 +37,6 @@ int send_connection(pid_t fp_pid)
     connect.sa_flags = SA_RESTART;
     sigaction(SIGUSR1, &connect, NULL);
     kill(fp_pid, SIGUSR1);
-    printf("killing %d\n", (int) fp_pid);
     while (!has_connected(0) && timeout != 3) {
         nanosleep(&time, NULL);
         timeout += 1;
@@ -47,8 +48,17 @@ int send_connection(pid_t fp_pid)
 
 int second_player(char *map_file, pid_t fp_pid)
 {
+    char **map = NULL;
+    struct sigaction atk;
+
     if (!send_connection(fp_pid)) {
         my_put_error("Error: timeout, wrong PID.\n");
         return (0);
     }
+    map = create_map();
+    atk.sa_handler = &attack_logger;
+    atk.sa_flags = SA_RESTART;
+    sigaction(SIGUSR1, &atk, NULL);
+    sigaction(SIGUSR2, &atk, NULL);
+    second_player_loop(map, fp_pid);
 }

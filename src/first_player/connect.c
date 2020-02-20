@@ -10,6 +10,8 @@
 #include <unistd.h>
 #include "connect_action.h"
 #include "my.h"
+#include "player_one_init.h"
+#include "connect.h"
 
 pid_t connect_note_book(char action, int info)
 {
@@ -45,7 +47,14 @@ pid_t get_connection(void)
 int first_player(char *map_path)
 {
     pid_t second_pid;
+    struct sigaction atk;
+    char **map = create_map();
 
     second_pid = get_connection();
     kill(second_pid, SIGUSR1);
+    atk.sa_handler = &attack_logger;
+    atk.sa_flags = SA_RESTART;
+    sigaction(SIGUSR1, &atk, NULL);
+    sigaction(SIGUSR2, &atk, NULL);
+    first_player_loop(map, second_pid);
 }
