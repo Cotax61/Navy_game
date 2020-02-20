@@ -35,4 +35,5 @@ int main(int ac, char **av)
             return (84);
         result = second_player(av[2], my_getnbr(av[1]));
     }
+    return (result);
 }

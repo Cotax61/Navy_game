@@ -5,8 +5,6 @@
 ** print the alphabet in ascending order
 */
 
-#include <sys/types.h>
-
 void my_putchar(char c);
 int my_usage(int a, int b);
 int my_isneg(int nb);
@@ -21,7 +19,6 @@ int my_ret_message(char *str, int ret);
 void my_put_array(char **array, int line_jump, int end_jump);
 int my_put_error(char *str);
 void my_swap(int *a, int *b);
-pid_t my_getpid(char *str);
 int my_putstr(char const *str);
 int my_strlen(char const *str);
 int my_getnbr(char const *str);
@@ -38,6 +35,7 @@ int my_strcmp(char const *s1, char const *s2);
 int my_strncmp(char const *s1, char const *s2, int n);
 char *my_strupcase(char *str);
 char *my_strlowcase(char *str);
+char *my_strcapitalize(char *str);
 int my_str_isalpha(char const *str);
 int my_str_isnum(char const *str);
 int my_str_islower(char const *str);

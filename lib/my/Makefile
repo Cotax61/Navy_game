@@ -17,7 +17,8 @@ $(NAME):
 
 clean:
 	rm -f *.o
-	rm -f $(NAME)
-	rm -f ../$(NAME)
 
-re: clean all
+fclean:
+	rm -f $(NAME)
+
+re: fclean clean all

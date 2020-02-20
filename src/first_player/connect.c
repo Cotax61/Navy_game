@@ -28,6 +28,8 @@ void connect_handler(int sig, siginfo_t *info, void *ucontext)
 {
     my_putstr("\nenemy connected\n");
     connect_note_book(SET_PID, (int)info->si_pid);
+    (void)sig;
+    (void)ucontext;
 }
 
 pid_t get_connection(void)
@@ -57,4 +59,6 @@ int first_player(char *map_path)
     sigaction(SIGUSR1, &atk, NULL);
     sigaction(SIGUSR2, &atk, NULL);
     first_player_loop(map, second_pid);
+    (void)map_path;
+    return (0);
 }

@@ -25,6 +25,7 @@ void valid_player(int sig)
 {
     my_putstr("successfully connected\n");
     has_connected(1);
+    (void)sig;
 }
 
 int send_connection(pid_t fp_pid)
@@ -61,4 +62,5 @@ int second_player(char *map_file, pid_t fp_pid)
     sigaction(SIGUSR1, &atk, NULL);
     sigaction(SIGUSR2, &atk, NULL);
     second_player_loop(map, fp_pid);
+    return (0);
 }
