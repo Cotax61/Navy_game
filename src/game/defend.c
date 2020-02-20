@@ -8,6 +8,7 @@
 #include <signal.h>
 #include <sys/types.h>
 #include <unistd.h>
+#include <stdio.h>
 #include "attack_log.h"
 #include "my.h"
 
@@ -42,6 +43,8 @@ int defend(char **map, pid_t pid)
     letter = get_shot_pos(pid) * 2;
     if (!letter)
         return (-1);
+    printf("number: %d\n", number);
+    printf("letter: %d\n", letter);
     hit = map[number][letter] != '.' ? 1 : 0;
     kill (pid, hit ? SIGUSR2 : SIGUSR1);
     display_atk_pos(number, letter);
