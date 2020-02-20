@@ -14,18 +14,19 @@
 
 int check_user_input(char *input, char **map)
 {
+    int num = 0;
+    int letter = 2 + (icase(input[0]) - 'a') * 2;
+
     if (input[2] != '\n' && input[2] != '\0')
         return (my_ret_message("Error: input should be 3 char long\n", 0));
     if (icase(input[0]) < 'a' || icase(input[0]) > 'h')
         return (my_ret_message("Error: first char have to be a letter\n", 0));
+    input[2] = '\0';
+    num = my_getnbr(input + 1) + 1;
     if (input[1] < '1' || input[1] > '8')
         return (my_ret_message("Error: second char have to be a number\n", 0));
-    if (map[my_getnbr(input) + 1][((icase(input[0]) - 'a' * 2) + 2)] == 'x')
+    if (map[num][letter] == 'x' || map[num][letter] == 'o')
         return (my_ret_message("Error: wrong position\n", 0));
-    else if (map[my_getnbr(input) + 1]
-    [((icase(input[0]) - 'a' * 2) + 2)] == 'o')
-        return (my_ret_message("Error: wrong position\n", 0));
-    input[2] = '\0';
     return (1);
 }
 
@@ -55,8 +56,8 @@ int check_atk_response(char **map, int letter, int number)
 {
     int response = attack_log(VALID_CHECK);
 
-    my_putstr(!response ? "Missed\n" : "Hit\n");
-    map[number][letter] = map[number][letter] != '.' ? 'o' : 'x';
+    my_putstr(response == -1 ? "Missed\n" : "Hit\n");
+    map[number][letter] = map[number][letter] == '.' ? 'o' : 'x';
     return (response);
 }
 
@@ -72,18 +73,19 @@ int attack(char **map, pid_t enemy)
     char *user_ipt = read_user_input(map);
 
     if (!user_ipt)
-        return (-1);
+        return (-2);
     usleep(600);
-    for (char i = 'a' - 1; i != (icase(user_ipt[0]) / 2) + 1; i++)
+    for (char i = 'a' - 1; i != icase(user_ipt[0]) + 1; i++)
         send_signals(enemy);
     kill(enemy, SIGUSR2);
     pause();
     usleep(300);
-    for (char i = '0'; i != user_ipt[1] + 1; i++)
+    for (char i = '0'; i != user_ipt[1]; i++)
         send_signals(enemy);
+    usleep(300);
     kill(enemy, SIGUSR2);
     attack_log(RESET_COUNT);
     pause();
-    return (check_atk_response(map, (icase(user_ipt[0]) / 2) + 1,
-    user_ipt[1] + 1));
+    return (check_atk_response(map, 2 + (icase(user_ipt[0]) - 'a') * 2,
+    user_ipt[1] - '0' + 1));
 }

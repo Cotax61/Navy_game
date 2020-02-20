@@ -31,7 +31,7 @@ TEST_SRC	=	tests/test_your_test.c	\
 
 TEST_OBJ	=	$(TEST_SRC:.c=.o)
 
-CFLAGS	=	-I./include -Wall -Wextra -Werror -pedantic -g3
+CFLAGS	=	-I./include -Wall -Wextra -pedantic
 
 LFLAGS	=	-L./lib -lmy
 
@@ -67,6 +67,9 @@ build: $(OBJ) $(MAIN_OBJ) ## Build the main binary
 	@printf "[\e[1;33mLinked\e[0m] % 43s\n" $(OBJ) | tr ' ' '.'
 	@printf "[\e[1;33mLinked\e[0m] % 43s\n" $(MAIN_OBJ) | tr ' ' '.'
 	@printf "\e[1;32mLinked all object files\e[0m\n"
+
+debug: CFLAGS += -g3 ## Compile using -g3 for debugging tools
+debug: re
 
 clean_lib: ## Clean the libs
 	@$(MAKE) -C ./lib/my/ --silent clean

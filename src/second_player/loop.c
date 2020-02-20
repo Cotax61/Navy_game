@@ -24,8 +24,8 @@ int second_player_loop(char **my_map, pid_t enemy)
         my_hp -= damage;
         if (!my_hp)
             break;
-        damage = attack(my_map, enemy);
-        if (damage == -1)
+        damage = attack(enemy_map, enemy);
+        if (damage == -2)
             return (-1);
         enemy_hp -= damage;
     }

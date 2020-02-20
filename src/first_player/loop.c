@@ -19,8 +19,8 @@ int first_player_loop(char **my_map, pid_t enemy)
 
     while (my_hp && enemy_hp) {
         display_pos(my_map, enemy_map);
-        damage = attack(my_map, enemy);
-        if (damage == -1)
+        damage = attack(enemy_map, enemy);
+        if (damage == -2)
             return (-1);
         enemy_hp -= damage;
         if (!enemy_hp)
