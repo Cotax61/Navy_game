@@ -21,6 +21,7 @@ SRC 	=	src/first_player/connect.c		\
 			src/attack_log.c				\
 			src/display.c					\
 			src/parsing/pre_check.c			\
+			src/parsing/post_check.c			\
 
 OBJ 	=	$(SRC:.c=.o)
 

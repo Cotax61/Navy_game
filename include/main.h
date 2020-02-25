@@ -19,5 +19,6 @@ char **place_navy(char *filename, char **map);
 char *seek_n_read(char *filepath);
 void display_pos(char **map1, char **map2);
 int pre_check(char *filepath);
+int post_check(char **map);
 
 #endif /* !MAIN_H_ */
