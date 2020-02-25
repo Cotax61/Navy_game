@@ -51,7 +51,7 @@ int first_player(char *map_path)
 {
     pid_t second_pid;
     struct sigaction atk;
-    char **map = create_map();
+    char **map = create_map(map_path);
 
     second_pid = get_connection();
     kill(second_pid, SIGUSR1);

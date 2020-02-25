@@ -14,7 +14,7 @@ int first_player_loop(char **my_map, pid_t enemy)
 {
     int enemy_hp = 14;
     int my_hp = 14;
-    char **enemy_map = create_map();
+    char **enemy_map = create_map(NULL);
     int damage = 0;
 
     while (my_hp && enemy_hp) {

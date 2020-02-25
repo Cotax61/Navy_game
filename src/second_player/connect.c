@@ -50,14 +50,13 @@ int send_connection(pid_t fp_pid)
 
 int second_player(char *map_file, pid_t fp_pid)
 {
-    char **map = NULL;
+    char **map = create_map(map_file);
     struct sigaction atk;
 
     if (!send_connection(fp_pid)) {
         my_put_error("Error: timeout, wrong PID.\n");
         return (0);
     }
-    map = create_map();
     atk.sa_handler = &attack_logger;
     atk.sa_flags = SA_RESTART;
     sigaction(SIGUSR1, &atk, NULL);

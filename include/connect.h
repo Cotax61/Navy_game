@@ -8,6 +8,6 @@
 #ifndef CONNECT_H_
 #define CONNECT_H_
 
-char **create_map(void);
+char **create_map(char *filepath);
 
 #endif /* !CONNECT_H_ */

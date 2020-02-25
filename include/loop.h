@@ -12,6 +12,6 @@
 
 int attack(char **map, pid_t enemy);
 int defend(char **map, pid_t pid);
-char **create_map(void);
+char **create_map(char *file_path);
 
 #endif /* !LOOP_H_ */

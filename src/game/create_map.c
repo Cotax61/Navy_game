@@ -8,6 +8,8 @@
 #include <stdlib.h>
 #include "my.h"
 
+char **place_navy(char *filepath, char **map);
+
 void create_base(char **map)
 {
     map[0] = my_strdup(" |A B C D E F G H\0");
@@ -23,12 +25,14 @@ void create_base(char **map)
     map[10] = NULL;
 }
 
-char **create_map(void)
+char **create_map(char *filepath)
 {
     char **map = NULL;
 
     map = malloc(sizeof(char *) * 11);
     map[10] = 0;
     create_base(map);
+    if (filepath != NULL)
+        map = place_navy(filepath, map);
     return (map);
 }
