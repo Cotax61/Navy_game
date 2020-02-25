@@ -5,6 +5,7 @@
 ** pre_check
 */
 
+#include <stdio.h>
 #include "my.h"
 #include "main.h"
 
@@ -20,7 +21,10 @@ static int basic_check(char *fc)
 
 static int get_diff(char *line)
 {
-    return (line[2] - line[5] + line[3] - line[6]);
+    int diff = 0;
+
+    diff = line[2] - line[5] + line[3] - line[6];
+    return (diff < 0 ? -diff + 1 : diff + 1);
 }
 
 static int pos_check(char *fc)
@@ -40,15 +44,15 @@ int pre_check(char *filepath)
 {
     char *file_content = NULL;
 
-    filepath = seek_n_read(filepath);
-    if (!filepath)
+    file_content = seek_n_read(filepath);
+    if (!file_content)
         return (-1);
-    if (my_strlen(filepath) != 32)
+    if (my_strlen(file_content) != 32)
         return (-1);
     if (basic_check(file_content) == -1)
         return (-1);
     if (pos_check(file_content) == -1)
         return (-1);
-    free(filepath);
+    free(file_content);
     return (0);
 }

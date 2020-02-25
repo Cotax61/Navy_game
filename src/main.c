@@ -5,6 +5,7 @@
 ** Main function
 */
 
+#include <stdio.h>
 #include "my.h"
 #include "main.h"
 
@@ -24,17 +25,18 @@ int main(int ac, char **av)
     int result = 0;
     int first_player_pid = 0;
 
+    printf("pre_check : %d\n", pre_check(av[1]));
     if (ac < 2) {
         help_message();
         return (84);
     } else if (ac == 2 && pre_check(av[1]) == 0)
         result = first_player(av[1]);
-    else if (pre_check(av[2])) {
+    else if (pre_check(av[2]) == 0 && ac == 3) {
         first_player_pid = my_getnbr(av[1]);
         if (first_player_pid <= 0)
             return (84);
         result = second_player(av[2], my_getnbr(av[1]));
     } else
-        return (84);    
+        return (84);
     return (result);
 }
