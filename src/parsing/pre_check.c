@@ -33,6 +33,7 @@ static int pos_check(char *fc)
             fc[i + 6] < '1' || get_diff(fc + i) != fc[i] - '0')
             return (-1);
     }
+    return (0);
 }
 
 int pre_check(char *filepath)

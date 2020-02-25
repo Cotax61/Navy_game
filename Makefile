@@ -15,11 +15,12 @@ SRC 	=	src/first_player/connect.c		\
 			src/parsing/file_parsing.c		\
 			src/parsing/my_split_cpy.c		\
 			src/parsing/my_str_split.c		\
-		  src/game/defend.c             \
-		  src/game/create_map.c         \
-		  src/game/attack.c \
-		  src/attack_log.c \
-		  src/display.c \
+			src/game/defend.c				\
+			src/game/create_map.c			\
+			src/game/attack.c				\
+			src/attack_log.c				\
+			src/display.c					\
+			src/parsing/pre_check.c			\
 
 OBJ 	=	$(SRC:.c=.o)
 
