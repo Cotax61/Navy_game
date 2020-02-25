@@ -27,13 +27,14 @@ int main(int ac, char **av)
     if (ac < 2) {
         help_message();
         return (84);
-    } else if (ac == 2)
+    } else if (ac == 2 && pre_check(av[1]) == 0)
         result = first_player(av[1]);
-    else {
+    else if (pre_check(av[2])) {
         first_player_pid = my_getnbr(av[1]);
         if (first_player_pid <= 0)
             return (84);
         result = second_player(av[2], my_getnbr(av[1]));
-    }
+    } else
+        return (84);    
     return (result);
 }
