@@ -60,6 +60,5 @@ int first_player(char *map_path)
     sigaction(SIGUSR1, &atk, NULL);
     sigaction(SIGUSR2, &atk, NULL);
     first_player_loop(map, second_pid);
-    (void)map_path;
     return (0);
 }

@@ -8,6 +8,7 @@
 #include <signal.h>
 #include <sys/types.h>
 #include <time.h>
+#include <unistd.h>
 #include "player_two_init.h"
 #include "connect.h"
 #include "main.h"
@@ -53,6 +54,9 @@ int second_player(char *map_file, pid_t fp_pid)
     char **map = create_map(map_file);
     struct sigaction atk;
 
+    my_putstr("my_pid: ");
+    my_put_nbr((int)getpid());
+    my_putchar('\n');
     if (!send_connection(fp_pid)) {
         my_put_error("Error: timeout, wrong PID.\n");
         return (0);
@@ -62,6 +66,5 @@ int second_player(char *map_file, pid_t fp_pid)
     sigaction(SIGUSR1, &atk, NULL);
     sigaction(SIGUSR2, &atk, NULL);
     second_player_loop(map, fp_pid);
-    (void)map_file;
     return (0);
 }

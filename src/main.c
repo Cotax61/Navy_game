@@ -20,12 +20,21 @@ void help_message(void)
     my_putstr("the position of the ships.\n");
 }
 
+void print_end_message(int index)
+{
+    if (index == 0)
+        my_putstr("I won\n");
+    else if (index == 1)
+        my_putstr("Enemy won\n");
+    else
+        my_put_error("Connection lost\n");    
+}
+
 int main(int ac, char **av)
 {
     int result = 0;
     int first_player_pid = 0;
 
-    printf("pre_check : %d\n", pre_check(av[1]));
     if (ac < 2) {
         help_message();
         return (84);
@@ -38,5 +47,6 @@ int main(int ac, char **av)
         result = second_player(av[2], my_getnbr(av[1]));
     } else
         return (84);
+    print_end_message(result);
     return (result);
 }

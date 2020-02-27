@@ -17,6 +17,7 @@ int my_sub(int a, int b);
 int my_mul(int a, int b);
 int my_div(int a, int b);
 int my_mod(int a, int b);
+char tocase(char c);
 int my_ret_message(char *str, int ret);
 void my_swap(int *a, int *b);
 int my_putstr(char const *str);
