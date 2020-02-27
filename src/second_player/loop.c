@@ -22,8 +22,10 @@ int second_player_loop(char **my_map, pid_t enemy)
         my_putstr("waiting for enemy's attack...\n");
         damage = defend(my_map, enemy);
         my_hp -= damage;
-        if (!my_hp)
+        if (!my_hp) {
+            display_pos(my_map, enemy_map);
             break;
+        }
         damage = attack(enemy_map, enemy);
         if (damage == -2)
             return (-1);

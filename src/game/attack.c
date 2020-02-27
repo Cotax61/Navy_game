@@ -56,11 +56,11 @@ int check_atk_response(char **map, int letter, int number)
 {
     int response = attack_log(VALID_CHECK);
 
-    my_putchar(tocase((char)letter));
-    my_putchar((char)number);
+    my_putchar(tocase(letter + 'A' - 5));
+    my_putchar(number + '1' - 2);
     my_putchar(':');
     my_putstr(response == -1 ? " missed\n" : " hit\n");
-    map[number][letter] = map[number][letter] == '.' ? 'o' : 'x';
+    map[number][letter] = response == -1 ? 'o' : 'x';
     return (response);
 }
 

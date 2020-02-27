@@ -20,8 +20,10 @@ int first_player_loop(char **my_map, pid_t enemy)
     while (my_hp && enemy_hp) {
         display_pos(my_map, enemy_map);
         damage = attack(enemy_map, enemy);
-        if (damage == -2)
+        if (damage == -2) {
+            display_pos(my_map, enemy_map);
             return (-1);
+        }
         enemy_hp -= damage;
         if (!enemy_hp)
             break;
