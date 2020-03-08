@@ -56,7 +56,7 @@ int check_atk_response(char **map, int letter, int number)
 {
     int response = attack_log(VALID_CHECK);
 
-    my_putchar(tocase(letter + 'A' - 5));
+    my_putchar(letter);
     my_putchar(number + '1' - 2);
     my_putchar(':');
     my_putstr(response == -1 ? " missed\n" : " hit\n");
@@ -89,6 +89,6 @@ int attack(char **map, pid_t enemy)
     kill(enemy, SIGUSR2);
     attack_log(RESET_COUNT);
     pause();
-    return (check_atk_response(map, 2 + (icase(user_ipt[0]) - 'a') * 2,
+    return (check_atk_response(map, icase(user_ipt[0]) - 32,
     user_ipt[1] - '0' + 1));
 }
